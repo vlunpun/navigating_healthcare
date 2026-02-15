@@ -308,8 +308,8 @@ export default function AssessmentChat() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/get-started" className="flex items-center gap-2">
-              <ShieldCheck className="w-8 h-8 text-blue-600" />
-              <span className="text-xl font-semibold text-foreground">Centauri Health</span>
+              <ShieldCheck className="w-10 h-10 text-blue-600" />
+              <span className="text-2xl font-bold text-foreground">Centauri Health</span>
             </Link>
           </div>
         </div>
@@ -318,8 +318,8 @@ export default function AssessmentChat() {
       <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-8 flex flex-col">
         <Card className="flex-1 flex flex-col p-4 sm:p-6 mb-4">
           <div className="mb-4">
-            <h1 className="text-3xl font-bold text-foreground">Medical Frailty Assessment</h1>
-            <p className="text-base text-muted-foreground">Answer the questions to determine your eligibility</p>
+            <h1 className="text-4xl font-bold text-foreground">Medical Frailty Assessment</h1>
+            <p className="text-xl text-muted-foreground">Answer the questions to determine your eligibility</p>
           </div>
 
           <div className="flex-1 overflow-y-auto space-y-4 mb-4">
@@ -335,7 +335,7 @@ export default function AssessmentChat() {
                       : "bg-muted text-foreground"
                   }`}
                 >
-                  <p className="text-base sm:text-lg">{message.text}</p>
+                  <p className="text-xl sm:text-2xl">{message.text}</p>
                 </div>
               </div>
             ))}
@@ -343,7 +343,7 @@ export default function AssessmentChat() {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="max-w-[80%] rounded-lg p-4 bg-muted">
-                  <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+                  <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
                 </div>
               </div>
             )}
@@ -358,16 +358,17 @@ export default function AssessmentChat() {
               placeholder="Type your answer here..."
               value={currentInput}
               onChange={(e) => setCurrentInput(e.target.value)}
-              className="flex-1 text-lg h-12"
+              className="flex-1 text-xl h-14"
               disabled={currentQuestionIndex >= questions.length || isTyping}
               autoFocus
             />
             <Button
               type="submit"
               size="icon"
+              className="h-14 w-14"
               disabled={!currentInput.trim() || currentQuestionIndex >= questions.length || isTyping}
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-6 h-6" />
             </Button>
           </form>
         </Card>

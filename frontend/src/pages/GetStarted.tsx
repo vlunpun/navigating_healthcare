@@ -10,8 +10,8 @@ export default function GetStarted() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-8 h-8 text-blue-600" />
-              <span className="text-xl font-semibold text-foreground">Centauri Health</span>
+              <ShieldCheck className="w-10 h-10 text-blue-600" />
+              <span className="text-2xl font-bold text-foreground">Centauri Health</span>
             </div>
           </div>
         </div>
@@ -19,14 +19,14 @@ export default function GetStarted() {
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-5xl sm:text-6xl font-bold text-foreground mb-4">
             Check if you may qualify for a medical frailty exemption
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Answer a few questions or upload your health information to see if you may qualify under Indiana Medicaid rules.
           </p>
           <Link to="/auth">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button size="lg" className="text-xl px-10 py-7">
               Get Started
             </Button>
           </Link>
@@ -37,8 +37,8 @@ export default function GetStarted() {
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <ShieldCheck className="w-8 h-8 text-blue-600" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">Sign in securely</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-2xl font-semibold mb-2">Sign in securely</h3>
+            <p className="text-lg text-muted-foreground">
               Access your health records safely through our secure authentication
             </p>
           </Card>
@@ -47,8 +47,8 @@ export default function GetStarted() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="w-8 h-8 text-green-600" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">Review your information</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-2xl font-semibold mb-2">Review your information</h3>
+            <p className="text-lg text-muted-foreground">
               We'll analyze your health data against Indiana's medical frailty criteria
             </p>
           </Card>
@@ -57,8 +57,8 @@ export default function GetStarted() {
             <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-8 h-8 text-purple-600" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">Get your results</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-2xl font-semibold mb-2">Get your results</h3>
+            <p className="text-lg text-muted-foreground">
               Receive a clear explanation of your eligibility status
             </p>
           </Card>

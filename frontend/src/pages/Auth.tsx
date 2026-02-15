@@ -24,8 +24,8 @@ export default function Auth() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/get-started" className="flex items-center gap-2">
-              <ShieldCheck className="w-8 h-8 text-blue-600" />
-              <span className="text-xl font-semibold text-foreground">Centauri Health</span>
+              <ShieldCheck className="w-10 h-10 text-blue-600" />
+              <span className="text-2xl font-bold text-foreground">Centauri Health</span>
             </Link>
           </div>
         </div>
@@ -36,10 +36,10 @@ export default function Auth() {
           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Lock className="w-8 h-8 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">
+          <h1 className="text-4xl font-bold text-foreground mb-2">
             Secure Authentication
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-xl text-muted-foreground">
             Authenticate securely with Clear to access your health records
           </p>
         </div>
@@ -47,27 +47,27 @@ export default function Auth() {
         <Card className="p-6">
           <div className="space-y-4">
             <div>
-              <Label htmlFor="email" className="text-base">Email or Phone</Label>
+              <Label htmlFor="email" className="text-xl">Email or Phone</Label>
               <Input
                 id="email"
                 type="text"
                 placeholder="you@example.com or +1 (555) 123-4567"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-2 text-base h-12"
+                className="mt-2 text-xl h-14"
               />
             </div>
 
             <Button
               onClick={handleContinue}
               disabled={!email || isLoading}
-              className="w-full h-12 text-base"
+              className="w-full h-14 text-xl"
             >
               {isLoading ? "Authenticating..." : "Continue with Clear"}
             </Button>
 
             <div className="pt-4 border-t">
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-base text-muted-foreground text-center">
                 By continuing, you agree to our{" "}
                 <a href="#" className="underline hover:text-foreground">
                   Privacy Policy
@@ -80,8 +80,8 @@ export default function Auth() {
 
         <div className="mt-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border">
-            <ShieldCheck className="w-5 h-5 text-green-600" />
-            <span className="text-sm text-muted-foreground">
+            <ShieldCheck className="w-6 h-6 text-green-600" />
+            <span className="text-lg text-muted-foreground">
               Secure HIPAA-compliant authentication
             </span>
           </div>
