@@ -12,6 +12,8 @@ interface Message {
   timestamp: Date;
 }
 
+type QuestionType = "boolean" | "text" | "number";
+
 interface AssessmentData {
   hasChronicConditions: boolean;
   chronicConditions: string[];
@@ -30,88 +32,103 @@ interface AssessmentData {
   hasHomeHealth: boolean;
 }
 
-const questions = [
+const questions: { id: number; text: string; field: keyof AssessmentData; type: QuestionType; dependsOn?: Partial<AssessmentData> }[] = [
   {
     id: 1,
-    text: "Hi! I'm here to help you determine if you may qualify for a medical frailty exemption under Indiana Medicaid. This assessment will take about 5-10 minutes. Let's start: Do you have any chronic health conditions? (Type 'yes' or 'no')",
-    field: "hasChronicConditions" as keyof AssessmentData
+    text: "Hi! I'm here to help you determine if you may qualify for a medical frailty exemption under Indiana Medicaid. This assessment will take about 5-10 minutes. Let's start: Do you have any chronic health conditions?",
+    field: "hasChronicConditions",
+    type: "boolean"
   },
   {
     id: 2,
-    text: "Thank you. Could you list your chronic conditions? For example: diabetes, heart disease, COPD, cancer, etc. (You can list multiple, separated by commas)",
-    field: "chronicConditions" as keyof AssessmentData,
+    text: "Could you list your chronic conditions? For example: diabetes, heart disease, COPD, cancer, etc. (You can list multiple, separated by commas)",
+    field: "chronicConditions",
+    type: "text",
     dependsOn: { hasChronicConditions: true }
   },
   {
     id: 3,
-    text: "Do you have diabetes? (Type 'yes' or 'no')",
-    field: "hasDiabetes" as keyof AssessmentData,
+    text: "Do you have diabetes?",
+    field: "hasDiabetes",
+    type: "boolean",
     dependsOn: { hasChronicConditions: true }
   },
   {
     id: 4,
-    text: "Do you have heart disease or cardiovascular problems? (Type 'yes' or 'no')",
-    field: "hasHeartDisease" as keyof AssessmentData,
+    text: "Do you have heart disease or cardiovascular problems?",
+    field: "hasHeartDisease",
+    type: "boolean",
     dependsOn: { hasChronicConditions: true }
   },
   {
     id: 5,
-    text: "Do you have COPD, asthma, or other chronic lung conditions? (Type 'yes' or 'no')",
-    field: "hasCOPD" as keyof AssessmentData,
+    text: "Do you have COPD, asthma, or other chronic lung conditions?",
+    field: "hasCOPD",
+    type: "boolean",
     dependsOn: { hasChronicConditions: true }
   },
   {
     id: 6,
-    text: "Do you have any mental health diagnoses such as depression, anxiety, bipolar disorder, or schizophrenia? (Type 'yes' or 'no')",
-    field: "hasMentalHealth" as keyof AssessmentData
+    text: "Do you have any mental health diagnoses such as depression, anxiety, bipolar disorder, or schizophrenia?",
+    field: "hasMentalHealth",
+    type: "boolean"
   },
   {
     id: 7,
-    text: "Do you need help with daily activities like bathing, dressing, eating, or moving around? (Type 'yes' or 'no')",
-    field: "needsADLHelp" as keyof AssessmentData
+    text: "Do you need help with daily activities like bathing, dressing, eating, or moving around?",
+    field: "needsADLHelp",
+    type: "boolean"
   },
   {
     id: 8,
     text: "Which activities do you need help with? For example: bathing, dressing, eating, toileting, transferring, walking. (List all that apply, separated by commas)",
-    field: "adlLimitations" as keyof AssessmentData,
+    field: "adlLimitations",
+    type: "text",
     dependsOn: { needsADLHelp: true }
   },
   {
     id: 9,
-    text: "Have you been hospitalized in the past 6 months? (Type 'yes' or 'no')",
-    field: "hasHospitalizations" as keyof AssessmentData
+    text: "Have you been hospitalized in the past 6 months?",
+    field: "hasHospitalizations",
+    type: "boolean"
   },
   {
     id: 10,
     text: "How many times have you been hospitalized in the past 6 months? (Enter a number)",
-    field: "hospitalizationCount" as keyof AssessmentData,
+    field: "hospitalizationCount",
+    type: "number",
     dependsOn: { hasHospitalizations: true }
   },
   {
     id: 11,
-    text: "Are you currently taking any prescription medications? (Type 'yes' or 'no')",
-    field: "takingMedications" as keyof AssessmentData
+    text: "Are you currently taking any prescription medications?",
+    field: "takingMedications",
+    type: "boolean"
   },
   {
     id: 12,
     text: "How many different prescription medications do you take regularly? (Enter a number)",
-    field: "medicationCount" as keyof AssessmentData,
+    field: "medicationCount",
+    type: "number",
     dependsOn: { takingMedications: true }
   },
   {
     id: 13,
-    text: "Do you have difficulty walking or moving around? (Type 'yes' or 'no')",
-    field: "hasMobilityLimitations" as keyof AssessmentData
+    text: "Do you have difficulty walking or moving around?",
+    field: "hasMobilityLimitations",
+    type: "boolean"
   },
   {
     id: 14,
-    text: "Do you use any assistive devices like a walker, wheelchair, or cane? (Type 'yes' or 'no')",
-    field: "usesAssistiveDevices" as keyof AssessmentData
+    text: "Do you use any assistive devices like a walker, wheelchair, or cane?",
+    field: "usesAssistiveDevices",
+    type: "boolean"
   },
   {
     id: 15,
-    text: "Do you receive home health services or have a caregiver who helps you at home? (Type 'yes' or 'no')",
-    field: "hasHomeHealth" as keyof AssessmentData
+    text: "Do you receive home health services or have a caregiver who helps you at home?",
+    field: "hasHomeHealth",
+    type: "boolean"
   }
 ];
 
@@ -122,6 +139,7 @@ export default function AssessmentChat() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [assessmentData, setAssessmentData] = useState<Partial<AssessmentData>>({});
+  const [currentQuestionType, setCurrentQuestionType] = useState<QuestionType>("boolean");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -171,6 +189,7 @@ export default function AssessmentChat() {
     }
 
     setIsTyping(true);
+    setCurrentQuestionType(question.type);
 
     setTimeout(() => {
       const newMessage: Message = {
@@ -207,6 +226,27 @@ export default function AssessmentChat() {
     setCurrentInput("");
 
     // Move to next question
+    setCurrentQuestionIndex(prev => prev + 1);
+    setTimeout(() => {
+      askQuestion(currentQuestionIndex + 1);
+    }, 500);
+  };
+
+  const handleYesNo = (answer: boolean) => {
+    const answerText = answer ? "Yes" : "No";
+
+    const userMessage: Message = {
+      id: `user-${Date.now()}`,
+      sender: "user",
+      text: answerText,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+
+    const currentQuestion = questions[currentQuestionIndex];
+    processAnswer(answerText, currentQuestion.field);
+
     setCurrentQuestionIndex(prev => prev + 1);
     setTimeout(() => {
       askQuestion(currentQuestionIndex + 1);
@@ -351,26 +391,46 @@ export default function AssessmentChat() {
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSubmit} className="flex gap-2">
-            <Input
-              ref={inputRef}
-              type="text"
-              placeholder="Type your answer here..."
-              value={currentInput}
-              onChange={(e) => setCurrentInput(e.target.value)}
-              className="flex-1 text-xl h-14"
-              disabled={currentQuestionIndex >= questions.length || isTyping}
-              autoFocus
-            />
-            <Button
-              type="submit"
-              size="icon"
-              className="h-14 w-14"
-              disabled={!currentInput.trim() || currentQuestionIndex >= questions.length || isTyping}
-            >
-              <Send className="w-6 h-6" />
-            </Button>
-          </form>
+          {currentQuestionType === "boolean" && currentQuestionIndex < questions.length ? (
+            <div className="flex gap-3">
+              <Button
+                onClick={() => handleYesNo(true)}
+                disabled={isTyping}
+                className="flex-1 h-14 text-xl"
+              >
+                Yes
+              </Button>
+              <Button
+                onClick={() => handleYesNo(false)}
+                variant="outline"
+                disabled={isTyping}
+                className="flex-1 h-14 text-xl"
+              >
+                No
+              </Button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex gap-2">
+              <Input
+                ref={inputRef}
+                type="text"
+                placeholder="Type your answer here..."
+                value={currentInput}
+                onChange={(e) => setCurrentInput(e.target.value)}
+                className="flex-1 text-xl h-14"
+                disabled={currentQuestionIndex >= questions.length || isTyping}
+                autoFocus
+              />
+              <Button
+                type="submit"
+                size="icon"
+                className="h-14 w-14"
+                disabled={!currentInput.trim() || currentQuestionIndex >= questions.length || isTyping}
+              >
+                <Send className="w-6 h-6" />
+              </Button>
+            </form>
+          )}
         </Card>
       </main>
     </div>
