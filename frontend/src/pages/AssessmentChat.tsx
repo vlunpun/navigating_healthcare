@@ -343,8 +343,8 @@ export default function AssessmentChat() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col">
-      <nav className="border-b bg-white">
+    <div className="h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col">
+      <nav className="border-b bg-white flex-shrink-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/get-started" className="flex items-center gap-2">
@@ -355,8 +355,8 @@ export default function AssessmentChat() {
         </div>
       </nav>
 
-      <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-8 flex flex-col">
-        <Card className="flex-1 flex flex-col p-4 sm:p-6 mb-4">
+      <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-4 flex flex-col overflow-hidden">
+        <Card className="flex-1 flex flex-col p-4 sm:p-6 overflow-hidden">
           <div className="mb-4">
             <h1 className="text-2xl font-bold text-foreground">Medical Frailty Assessment</h1>
             <p className="text-base text-muted-foreground">Answer the questions to determine your eligibility</p>
