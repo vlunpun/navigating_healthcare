@@ -1,8 +1,8 @@
 {
   "rewrites": [
-    { "source": "/auth/:path*", "destination": "https://frailty-infer-707091819757.us-central1.run.app/auth/:path*" },
-    { "source": "/infer-with-guidance", "destination": "https://frailty-infer-707091819757.us-central1.run.app/infer-with-guidance" },
-    { "source": "/chat", "destination": "https://frailty-infer-707091819757.us-central1.run.app/chat" },
+    { "source": "/auth/:path*", "destination": "https://frailty-infer-qut4mguu6a-uc.a.run.app/auth/:path*" },
+    { "source": "/infer-with-guidance", "destination": "https://frailty-infer-qut4mguu6a-uc.a.run.app/infer-with-guidance" },
+    { "source": "/chat", "destination": "https://frailty-infer-qut4mguu6a-uc.a.run.app/chat" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

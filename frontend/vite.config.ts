@@ -17,15 +17,15 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/auth': {
-        target: 'https://frailty-infer-707091819757.us-central1.run.app',
+        target: 'https://frailty-infer-qut4mguu6a-uc.a.run.app',
         changeOrigin: true,
       },
       '/infer-with-guidance': {
-        target: 'https://frailty-infer-707091819757.us-central1.run.app',
+        target: 'https://frailty-infer-qut4mguu6a-uc.a.run.app',
         changeOrigin: true,
       },
       '/chat': {
-        target: 'https://frailty-infer-707091819757.us-central1.run.app',
+        target: 'https://frailty-infer-qut4mguu6a-uc.a.run.app',
         changeOrigin: true,
       },
     },
