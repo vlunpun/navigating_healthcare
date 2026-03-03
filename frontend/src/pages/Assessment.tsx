@@ -298,20 +298,19 @@ export default function Assessment() {
             </div>
             <div className="flex-1">
               <h3 className="text-lg font-semibold mb-2">
-                How to Apply for a Medical Frailty Exemption
+                How to Apply for Medicaid
               </h3>
               <p className="text-base text-muted-foreground mb-4">
-                Official guidance from the Indiana Family and Social Services
-                Administration on applying for medical frailty exemptions under
-                Medicaid.
+                Visit Indiana Medicaid's official website to start your
+                application or learn more about eligibility and enrollment.
               </p>
               <a
-                href="https://www.in.gov/fssa/hip/medical-frailty-and-special-health-care-needs/"
+                href="https://www.in.gov/medicaid/members/apply-for-medicaid/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button className="text-base h-10">
-                  Apply on Indiana FSSA Website
+                  Apply for Indiana Medicaid
                   <ExternalLink className="w-4 h-4 ml-2" />
                 </Button>
               </a>
