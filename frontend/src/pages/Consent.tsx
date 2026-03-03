@@ -34,9 +34,6 @@ export default function Consent() {
           <p className="text-base text-muted-foreground">
             Please review and accept before we access your health records
           </p>
-          <p className="text-xs text-muted-foreground mt-1">
-            Effective Date: March 17, 2026
-          </p>
         </div>
 
         <Card className="p-6">
@@ -44,7 +41,7 @@ export default function Consent() {
             {/* ── How we use your data ─────────────────────────── */}
             <section>
               <h2 className="text-base font-semibold text-foreground mb-2">
-                How we access and use your health information
+                How we use your health information
               </h2>
               <ul className="list-disc pl-5 space-y-2">
                 <li>
@@ -84,55 +81,24 @@ export default function Consent() {
               <h2 className="text-base font-semibold text-foreground mb-2">
                 Sharing and disclosure
               </h2>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>
-                  Your health information is <strong>not sold</strong>, shared
-                  with third parties, or used for advertising or marketing
-                  purposes.
-                </li>
-                <li>
-                  Your health information will not be used to assert any type of
-                  claim against you, except for the collection of applicable
-                  fees.
-                </li>
-                <li>
-                  All data exchanges through TEFCA are in accordance with the
-                  permitted and required uses and disclosures specified in the
-                  Common Agreement and applicable HHS guidance.
-                </li>
-                <li>
-                  If we receive a civil or criminal subpoena, court order, or
-                  other compulsory demand for your information, we will notify
-                  you in writing within three (3) business days unless
-                  prohibited by law.
-                </li>
-              </ul>
+              <p>
+                Your health information is <strong>not sold</strong>, shared
+                with third parties, or used for advertising or marketing
+                purposes.
+              </p>
             </section>
 
             {/* ── Security ─────────────────────────────────────── */}
             <section>
               <h2 className="text-base font-semibold text-foreground mb-2">
-                Security practices
+                Security
               </h2>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>
-                  Centauri Health uses commercially reasonable efforts to protect
-                  your information from unauthorized access, modification, use,
-                  or destruction.
-                </li>
-                <li>
-                  All health information is encrypted both in transit and at rest
-                  during processing.
-                </li>
-                <li>
-                  Centauri Health is designed to operate in a HIPAA-compliant
-                  environment.
-                </li>
-                <li>
-                  If your information is reasonably believed to have been
-                  affected by a security incident, we will notify you promptly.
-                </li>
-              </ul>
+              <p>
+                Centauri Health is designed to operate in a HIPAA-compliant
+                environment. If your information is reasonably believed to have
+                been affected by a security incident, we will notify you
+                promptly.
+              </p>
             </section>
 
             {/* ── Your rights ──────────────────────────────────── */}
@@ -140,42 +106,10 @@ export default function Consent() {
               <h2 className="text-base font-semibold text-foreground mb-2">
                 Your rights
               </h2>
-              <p className="mb-2">You have the right to:</p>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>
-                  <strong>Revoke consent</strong> at any time by closing the
-                  application or contacting us. Because we do not retain your
-                  data, no further action is needed after you end your session.
-                </li>
-                <li>
-                  <strong>Be notified</strong> if your information is reasonably
-                  believed to have been affected by a security incident.
-                </li>
-              </ul>
-            </section>
-
-            {/* ── IAS Provider type ────────────────────────────── */}
-            <section>
-              <h2 className="text-base font-semibold text-foreground mb-2">
-                TEFCA Individual Access Services
-              </h2>
-              <p className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm">
-                Centauri Health provides <strong>request-only</strong>{" "}
-                Individual Access Services. You will have the ability to request
-                access to your health information via TEFCA Exchange. You will
-                not be able to use Centauri Health to share your health
-                information with other participants in TEFCA.
-              </p>
-            </section>
-
-            {/* ── Fees ─────────────────────────────────────────── */}
-            <section>
-              <h2 className="text-base font-semibold text-foreground mb-2">
-                Fees
-              </h2>
               <p>
-                There is no fee to use Centauri Health's frailty assessment
-                service.
+                You may <strong>revoke consent</strong> at any time by closing
+                the application or contacting us. Because we do not retain your
+                data, no further action is needed after you end your session.
               </p>
             </section>
 
@@ -232,7 +166,7 @@ export default function Consent() {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border">
             <Lock className="w-5 h-5 text-green-600" />
             <span className="text-sm text-muted-foreground">
-              HIPAA-compliant &middot; TEFCA Individual Access Services
+              HIPAA-compliant data handling
             </span>
           </div>
         </div>

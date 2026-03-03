@@ -14,6 +14,7 @@ import {
   Phone,
   CheckSquare,
   Building2,
+  ExternalLink,
 } from "lucide-react";
 import {
   chatMessage,
@@ -35,7 +36,6 @@ export default function Assessment() {
 
   useEffect(() => {
     if (!state) navigate("/get-started", { replace: true });
-    else window.scrollTo(0, 0);
   }, [state, navigate]);
 
   if (!state) return null;
@@ -54,10 +54,12 @@ export default function Assessment() {
   ]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
-  const endRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
+  // scroll only within the chat container, not the whole page
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = chatContainerRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [messages]);
 
   const handleSend = async () => {
@@ -163,16 +165,16 @@ export default function Assessment() {
           {guidance.bullets.length > 0 && (
             <div className="bg-muted rounded-lg p-6 mb-6">
               <h3 className="text-base font-semibold mb-3">
-                {isFrail ? "Factors Supporting Eligibility:" : "Assessment Details:"}
+                {isFrail ? "Factors Supporting Eligibility:" : "Why this determination was made:"}
               </h3>
               <ul className="space-y-3">
                 {guidance.bullets.map((b, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <CheckCircle
-                      className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
-                        isFrail ? "text-green-600" : "text-blue-600"
-                      }`}
-                    />
+                    {isFrail ? (
+                      <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-600" />
+                    ) : (
+                      <span className="text-muted-foreground text-base mt-0.5">&#8226;</span>
+                    )}
                     <span className="text-base">{b}</span>
                   </li>
                 ))}
@@ -298,11 +300,21 @@ export default function Assessment() {
               <h3 className="text-lg font-semibold mb-2">
                 How to Apply for a Medical Frailty Exemption
               </h3>
-              <p className="text-base text-muted-foreground">
+              <p className="text-base text-muted-foreground mb-4">
                 Official guidance from the Indiana Family and Social Services
                 Administration on applying for medical frailty exemptions under
                 Medicaid.
               </p>
+              <a
+                href="https://www.in.gov/fssa/hip/medical-frailty-and-special-health-care-needs/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="text-base h-10">
+                  Apply on Indiana FSSA Website
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
             </div>
           </div>
         </Card>
@@ -381,7 +393,10 @@ export default function Assessment() {
             Questions? Ask our assistant
           </h2>
 
-          <div className="overflow-y-auto space-y-4 mb-4 min-h-[200px] max-h-[400px]">
+          <div
+            ref={chatContainerRef}
+            className="overflow-y-auto space-y-4 mb-4 min-h-[200px] max-h-[400px]"
+          >
             {messages.map((m) => (
               <div
                 key={m.id}
@@ -407,7 +422,6 @@ export default function Assessment() {
                 </div>
               </div>
             )}
-            <div ref={endRef} />
           </div>
 
           <form
@@ -437,10 +451,6 @@ export default function Assessment() {
 
         {/* ── Bottom actions ─────────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button size="lg" className="flex-1 text-base h-11">
-            <FileText className="w-4 h-4 mr-2" />
-            Download Summary
-          </Button>
           <Link to="/get-started" className="flex-1">
             <Button
               size="lg"
