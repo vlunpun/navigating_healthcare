@@ -42,7 +42,6 @@ export default function Assessment() {
 
   const { inference, guidance, chat_handoff } = state;
   const isFrail = inference.frail === 1;
-  const pct = (inference.frailty_probability * 100).toFixed(1);
 
   // ── Chat state ──────────────────────────────────────────────────
   const [messages, setMessages] = useState<ChatMsg[]>([
@@ -150,9 +149,6 @@ export default function Assessment() {
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-semibold mb-2">Assessment Summary</h2>
-              <p className="text-base text-muted-foreground mb-1">
-                Frailty probability: <strong className="text-foreground">{pct}%</strong>
-              </p>
               <p className="text-base text-muted-foreground">
                 {isFrail
                   ? "Your health information indicates that you likely qualify for a medical frailty exemption under Indiana Medicaid rules."
